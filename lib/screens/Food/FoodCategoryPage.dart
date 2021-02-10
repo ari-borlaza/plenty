@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plenty/config/colors.dart';
+import 'package:plenty/config/imgList.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/plenty_data.dart';
 import 'package:plenty/widget/app_widget.dart';
@@ -14,7 +15,7 @@ class FoodCategoryPage extends StatefulWidget {
 
 class _FoodCategoryPageState extends State<FoodCategoryPage>
     with SingleTickerProviderStateMixin {
-  var _plentyData = PlentyData();
+  //var _plentyData = PlentyData();
 
   Size get _size => MediaQuery.of(context).size;
 
@@ -38,8 +39,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         children: <Widget>[
           _backgroundListView(),
 
-          _plentyListView(),
-          _homeHeader(),
+          _foodBody(),
           // _buyButton(context)
         ],
       ),
@@ -51,7 +51,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
       controller: _backgroundScrollController,
       padding: EdgeInsets.zero,
       reverse: true,
-      itemCount: _plentyData.plentyList.length,
+      itemCount: foodImgList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx, index) {
         return Container(
@@ -64,7 +64,9 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 left: -_size.width / 3,
                 right: -_size.width / 3,
                 child: Image(
-                  image: _plentyData.plentyList[index].image.image,
+                  image: NetworkImage(
+                    foodImgList[index],
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -115,7 +117,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         );
       },
       child: Container(
-        height: _size.height * .75,
+        height: _size.height * .5,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -128,7 +130,43 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             },
             itemSize: _plentyItemWidth,
             padding: EdgeInsets.zero,
-            itemCount: _plentyData.plentyList.length,
+            itemCount: foodImgList.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return _plentyItem(index);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _plentyListView1() {
+    return TweenAnimationBuilder(
+      duration: Duration(milliseconds: 700),
+      tween: Tween<double>(begin: 600, end: 0),
+      curve: Curves.easeOutCubic,
+      builder: (_, value, child) {
+        return Transform.translate(
+          offset: Offset(value, 0),
+          child: child,
+        );
+      },
+      child: Container(
+        height: _size.height * .5,
+        child: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (overScroll) {
+            overScroll.disallowGlow();
+            return true;
+          },
+          child: ScrollSnapList(
+            listController: _plentyScrollController,
+            onItemFocus: (item) {
+              _plentyIndex = item;
+            },
+            itemSize: _plentyItemWidth,
+            padding: EdgeInsets.zero,
+            itemCount: foodImgList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return _plentyItem(index);
@@ -141,12 +179,20 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
 
   Widget _plentyItem(int index) {
     return Container(
-      padding: EdgeInsets.only(bottom: 40),
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          AnimatedBuilder(
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              image: NetworkImage(
+                foodImgList[index],
+              ),
+              width: _size.width / 2,
+            ),
+          ),
+          /*  AnimatedBuilder(
             animation: _plentyScrollController,
             builder: (context, child) {
               double activeOffset = index * _plentyItemWidth;
@@ -157,13 +203,13 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 opacity: opacity / 100,
                 child: Column(
                   children: <Widget>[
-                    Text(
+                    /*   Text(
                       _plentyData.plentyList[index].category,
                       style: TextStyle(
                           color: AppColors.plentyblue,
                           fontSize: _size.width / 14,
                           fontWeight: FontWeight.w700),
-                    ),
+                    ), */
                     /*  SizedBox(
                       height: _size.height * .01,
                     ),
@@ -188,10 +234,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
               );
             },
           ),
-          SizedBox(
-            height: _size.height * .02,
-          ),
-          AnimatedBuilder(
+           */ /*    AnimatedBuilder(
             animation: _plentyScrollController,
             builder: (ctx, child) {
               double activeOffset = index * _plentyItemWidth;
@@ -203,14 +246,10 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 height: translate,
               );
             },
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image(
-              image: _plentyData.plentyList[index].image.image,
-              width: _size.width / 2,
-            ),
-          ),
+          ), */
+          /* SizedBox(
+            height: _size.height * .02,
+          ), */
         ],
       ),
     );
@@ -301,7 +340,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
     return translate;
   }
 
-  Widget _homeHeader() {
+  Widget _foodBody() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -338,6 +377,14 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 homeWelcome1('Welcome Name, what are you in the mood for?', 15),
               ],
             )),
+        _plentyListView(),
+        Container(
+            margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+            child: Divider(
+              color: Colors.black,
+              height: 10,
+            )),
+        _plentyListView1()
       ],
     );
   }
