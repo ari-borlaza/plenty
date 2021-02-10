@@ -1,20 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/plenty_data.dart';
-
-import 'package:plenty/screens/Food/FoodCategoryPage.dart';
 import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:video_player/video_player.dart';
 
-class HomePage extends StatefulWidget {
+class FoodCategoryPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _FoodCategoryPageState createState() => _FoodCategoryPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _FoodCategoryPageState extends State<FoodCategoryPage>
     with SingleTickerProviderStateMixin {
   var _plentyData = PlentyData();
 
@@ -40,8 +38,8 @@ class _HomePageState extends State<HomePage>
         children: <Widget>[
           _backgroundListView(),
 
-          _homeHeader(),
           _plentyListView(),
+          _homeHeader(),
           // _buyButton(context)
         ],
       ),
@@ -142,92 +140,82 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _plentyItem(int index) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            PageTransition(
-                type: PageTransitionType.topToBottom,
-                duration: Duration(milliseconds: 500),
-                child: FoodCategoryPage()));
-      },
-      child: Container(
-        padding: EdgeInsets.only(bottom: 40),
-        margin: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            AnimatedBuilder(
-              animation: _plentyScrollController,
-              builder: (context, child) {
-                double activeOffset = index * _plentyItemWidth;
-                double opacity = _plentyDescriptionOpacity(
-                    _plentyScrollController.offset, activeOffset);
+    return Container(
+      padding: EdgeInsets.only(bottom: 40),
+      margin: EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          AnimatedBuilder(
+            animation: _plentyScrollController,
+            builder: (context, child) {
+              double activeOffset = index * _plentyItemWidth;
+              double opacity = _plentyDescriptionOpacity(
+                  _plentyScrollController.offset, activeOffset);
 
-                return Opacity(
-                  opacity: opacity / 100,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        _plentyData.plentyList[index].category,
-                        style: TextStyle(
-                            color: AppColors.plentyblue,
-                            fontSize: _size.width / 14,
-                            fontWeight: FontWeight.w700),
+              return Opacity(
+                opacity: opacity / 100,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      _plentyData.plentyList[index].category,
+                      style: TextStyle(
+                          color: AppColors.plentyblue,
+                          fontSize: _size.width / 14,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    /*  SizedBox(
+                      height: _size.height * .01,
+                    ),
+                    AppWidget.genresFormat(
+                        _plentyData.plentyList[index].genre, Colors.white),
+                    SizedBox(
+                      height: _size.height * .01,
+                    ),
+                    Text(
+                      _plentyData.plentyList[index].rating.toString(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: _size.width / 16,
                       ),
-                      /*  SizedBox(
-                        height: _size.height * .01,
-                      ),
-                      AppWidget.genresFormat(
-                          _plentyData.plentyList[index].genre, Colors.white),
-                      SizedBox(
-                        height: _size.height * .01,
-                      ),
-                      Text(
-                        _plentyData.plentyList[index].rating.toString(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _size.width / 16,
-                        ),
-                      ),
-                      SizedBox(
-                        height: _size.height * .005,
-                      ),
-                      AppWidget.starRating(_plentyData.plentyList[index].rating) */
-                    ],
-                  ),
-                );
-              },
-            ),
-            SizedBox(
-              height: _size.height * .02,
-            ),
-            AnimatedBuilder(
-              animation: _plentyScrollController,
-              builder: (ctx, child) {
-                double activeOffset = index * _plentyItemWidth;
+                    ),
+                    SizedBox(
+                      height: _size.height * .005,
+                    ),
+                    AppWidget.starRating(_plentyData.plentyList[index].rating) */
+                  ],
+                ),
+              );
+            },
+          ),
+          SizedBox(
+            height: _size.height * .02,
+          ),
+          AnimatedBuilder(
+            animation: _plentyScrollController,
+            builder: (ctx, child) {
+              double activeOffset = index * _plentyItemWidth;
 
-                double translate = _plentyTranslate(
-                    _plentyScrollController.offset, activeOffset);
+              double translate = _plentyTranslate(
+                  _plentyScrollController.offset, activeOffset);
 
-                return SizedBox(
-                  height: translate,
-                );
-              },
+              return SizedBox(
+                height: translate,
+              );
+            },
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              image: _plentyData.plentyList[index].image.image,
+              width: _size.width / 2,
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image(
-                image: _plentyData.plentyList[index].image.image,
-                width: _size.width / 2,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
-
+/* 
   Widget _buyButton(BuildContext context) {
     return Container(
       height: _size.height * .10,
@@ -265,7 +253,7 @@ class _HomePageState extends State<HomePage>
         ),
       ),
     );
-  }
+  } */
 
   double _plentyDescriptionOpacity(double offset, double activeOffset) {
     double opacity;
@@ -318,8 +306,26 @@ class _HomePageState extends State<HomePage>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                CupertinoIcons.chevron_left,
+                color: Colors.white,
+              ),
+              appBartxt('Fine Dining', 20),
+              Icon(
+                //CupertinoIcons.cart_badge_minus,
+                Icons.shopping_basket_outlined,
+                color: Colors.white,
+              ),
+            ],
+          ),
+        ),
         Container(
-          height: 70,
+          height: 10,
           //  color: Colors.green,
         ),
         Container(
@@ -327,35 +333,11 @@ class _HomePageState extends State<HomePage>
               25,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.person,
-                      color: Colors.white,
-                    ),
-                    homeWelcome1('Welcome, Name', 30),
-                  ],
-                ),
-                SizedBox(
-                  width: 100,
-                ),
-                Icon(
-                  Icons.menu,
-                  color: Colors.white,
-                ),
+                homeWelcome1('Welcome Name, what are you in the mood for?', 15),
               ],
             )),
-        Container(
-            padding: EdgeInsets.only(left: 50, top: 50),
-            child: homeChoose1('Choose your', 30)),
-        Container(
-            padding: EdgeInsets.only(
-              left: 50,
-            ),
-            child: homeChoose1('Experience', 30)),
       ],
     );
   }

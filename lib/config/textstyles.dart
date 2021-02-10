@@ -26,6 +26,49 @@ Widget logWelcome1(String txt1, double a) {
     text: [txt1],
     textStyle: GoogleFonts.oswald(fontSize: a, color: AppColors.plentyblue),
     textAlign: TextAlign.start,
-    pause: Duration(milliseconds: 5000),
+    pause: Duration(seconds: 30),
+  );
+}
+
+Widget homeWelcome1(String txt1, double a) {
+  return TypewriterAnimatedTextKit(
+    onTap: () {
+      print("Tap Event");
+    },
+    text: [txt1],
+    textStyle: GoogleFonts.oswald(fontSize: a, color: AppColors.white),
+    textAlign: TextAlign.start,
+    pause: Duration(milliseconds: 30000),
+  );
+}
+
+Text homeChoose(String txt, double a) {
+  return Text(
+    txt,
+    style: GoogleFonts.ebGaramond(
+        fontSize: a, fontWeight: FontWeight.w700, color: AppColors.plentyblue),
+  );
+}
+
+Widget homeChoose1(String txt1, double a) {
+  return TypewriterAnimatedTextKit(
+    onTap: () {
+      print("Tap Event");
+    },
+    text: [txt1],
+    textStyle: GoogleFonts.ebGaramond(
+      fontSize: a,
+      color: AppColors.plentyblue,
+      fontWeight: FontWeight.w700,
+    ),
+    textAlign: TextAlign.start,
+    pause: Duration(milliseconds: 15000),
+  );
+}
+
+Text appBartxt(String txt, double a) {
+  return Text(
+    txt,
+    style: GoogleFonts.oswald(fontSize: a, color: AppColors.white),
   );
 }

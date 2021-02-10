@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
-import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/imglist.dart';
 import 'package:plenty/config/textstyles.dart';
+import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:sign_button/sign_button.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class SignInPage extends StatefulWidget {
   final String pageTitle;
@@ -27,7 +27,7 @@ class _SignInPageState extends State<SignInPage> {
           image: NetworkImage(foodImgList[0]),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-              Colors.white.withOpacity(0.9), BlendMode.lighten),
+              Colors.white.withOpacity(0.7), BlendMode.lighten),
         )),
         child: Center(
             child: Column(
@@ -66,26 +66,23 @@ class _SignInPageState extends State<SignInPage> {
               width: 300,
               padding: EdgeInsets.only(bottom: 5, top: 5),
               child: plentyFlatBtn('LOGIN', () {
-                /* 
-                    Navigator.pushReplacement(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.fade,
-                            duration: Duration(seconds: 1),
-                            child: SignInPage())); */
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        duration: Duration(milliseconds: 500),
+                        child: HomePage()));
               }),
             ),
             Container(
               width: 300,
               child: plentyOutlineBtn('REGISTER', () {
-                /* 
-                    Navigator.pushReplacement(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.fade,
-                            duration: Duration(seconds: 1),
-                            child: SignUpPage())); */
-                // Navigator.of(context).pushReplacementNamed('/signup');
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        duration: Duration(milliseconds: 500),
+                        child: HomePage()));
               }),
             ),
             Container(
@@ -115,16 +112,37 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 SignInButton.mini(
                   buttonType: ButtonType.google,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            duration: Duration(milliseconds: 500),
+                            child: HomePage()));
+                  },
                 ),
                 SignInButton.mini(
                   buttonType: ButtonType.apple,
                   btnColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            duration: Duration(milliseconds: 500),
+                            child: HomePage()));
+                  },
                 ),
                 SignInButton.mini(
                   buttonType: ButtonType.twitter,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeftWithFade,
+                            duration: Duration(milliseconds: 500),
+                            child: HomePage()));
+                  },
                 ),
               ],
             )

@@ -94,8 +94,8 @@ Container plentyPasswordInput(String hintText,
       style: inputFieldHintPaswordTextStyle,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
-          filled: true,
-          fillColor: AppColors.txtfields,
+          /*    filled: true,
+          fillColor: AppColors.txtfields, */
           hintText: hintText,
           hintStyle: GoogleFonts.oswald(fontSize: 15),
           focusedBorder: inputFieldFocusedBorderStyle,
@@ -104,3 +104,5 @@ Container plentyPasswordInput(String hintText,
     ),
   );
 }
+
+
