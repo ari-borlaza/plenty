@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/data/data_list.dart';
+import 'package:plenty/data/food_data_list.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:sign_button/sign_button.dart';
 

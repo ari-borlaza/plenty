@@ -4,9 +4,10 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/data/data_list.dart';
+import 'package:plenty/data/food_data_list.dart';
 import 'package:plenty/data/plenty_data.dart';
 import 'package:plenty/screens/Food/FoodStorePage.dart';
+import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:plenty/screens/SignInPage.dart';
 import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
@@ -285,9 +286,12 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pop(
-                    context,
-                  );
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.bottomToTop,
+                          duration: Duration(milliseconds: 500),
+                          child: HomePage()));
                 },
                 child: Icon(
                   CupertinoIcons.chevron_left,

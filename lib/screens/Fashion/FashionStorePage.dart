@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/data/data_list.dart';
+import 'package:plenty/data/food_data_list.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class FashionStorePage extends StatefulWidget {

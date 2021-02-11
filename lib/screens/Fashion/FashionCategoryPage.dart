@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/data/data_list.dart';
+import 'package:plenty/data/fashion_data_list.dart';
 import 'package:plenty/data/plenty_data.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
@@ -24,7 +24,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
   ScrollController _backgroundScrollController = ScrollController();
   double _maxPlentyTranslate = 65;
   int _plentyIndex = 0;
-  List<Map<String, dynamic>> items = foodStore[0]["item"];
+  List<Map<String, dynamic>> items = fashionStore[0]["item"];
   @override
   Widget build(BuildContext context) {
     _plentyScrollController.addListener(() {
@@ -43,7 +43,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
         children: <Widget>[
           _backgroundListView(),
 
-          _foodBody(),
+          _fashionBody(),
           // _buyButton(context)
         ],
       ),
@@ -55,7 +55,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
       controller: _backgroundScrollController,
       padding: EdgeInsets.zero,
       reverse: true,
-      itemCount: foodImgListVert.length,
+      itemCount: fashionImgListVert.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx, index) {
         return Container(
@@ -69,7 +69,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
                 right: -_size.width / 3,
                 child: Image(
                   image: NetworkImage(
-                    foodImgListVert[index],
+                    fashionImgListVert[index],
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -130,14 +130,14 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
           child: ScrollSnapList(
             listController: _plentyScrollController,
             onItemFocus: (item) {
-              items = foodStore[item]["item"];
+              items = fashionStore[item]["item"];
               setState(() {
                 _plentyIndex = item;
               });
             },
             itemSize: _plentyItemWidth,
             //padding: EdgeInsets.zero,
-            itemCount: foodImgListVert.length,
+            itemCount: fashionImgListVert.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return _plentyItem(index);
@@ -194,7 +194,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             borderRadius: BorderRadius.circular(20),
             child: Image(
               image: NetworkImage(
-                foodImgListVert[index],
+                fashionImgListVert[index],
               ),
               width: _size.width / 2,
             ),
@@ -258,7 +258,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
     );
   }
 
-  Widget _foodBody() {
+  Widget _fashionBody() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
