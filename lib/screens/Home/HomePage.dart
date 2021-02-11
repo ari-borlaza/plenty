@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
@@ -170,7 +171,7 @@ class _HomePageState extends State<HomePage>
                     children: <Widget>[
                       Text(
                         _plentyData.plentyList[index].category,
-                        style: TextStyle(
+                        style: GoogleFonts.oswald(
                             color: AppColors.plentyblue,
                             fontSize: _size.width / 14,
                             fontWeight: FontWeight.w700),
@@ -349,7 +350,7 @@ class _HomePageState extends State<HomePage>
               ],
             )),
         Container(
-            padding: EdgeInsets.only(left: 50, top: 50),
+            padding: EdgeInsets.only(left: 50, top: 30),
             child: homeChoose1('Choose your', 30)),
         Container(
             padding: EdgeInsets.only(

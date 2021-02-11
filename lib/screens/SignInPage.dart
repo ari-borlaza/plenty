@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
-import 'package:plenty/config/imglist.dart';
 import 'package:plenty/config/textstyles.dart';
+import 'package:plenty/data/data_list.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:sign_button/sign_button.dart';
 
@@ -24,7 +24,7 @@ class _SignInPageState extends State<SignInPage> {
           body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: NetworkImage(foodImgList[0]),
+          image: NetworkImage(foodImgListVert[0]),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
               Colors.white.withOpacity(0.7), BlendMode.lighten),

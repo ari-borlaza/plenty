@@ -72,3 +72,22 @@ Text appBartxt(String txt, double a) {
     style: GoogleFonts.oswald(fontSize: a, color: AppColors.white),
   );
 }
+
+Widget homeWelcome2(String txt1, double a) {
+  return TyperAnimatedTextKit(
+    onTap: () {
+      print("Tap Event");
+    },
+    text: [txt1],
+    textStyle: GoogleFonts.oswald(fontSize: a, color: AppColors.black),
+    textAlign: TextAlign.start,
+    pause: Duration(seconds: 30),
+  );
+}
+
+Text itemTxt(String txt, double a) {
+  return Text(
+    txt,
+    style: GoogleFonts.raleway(fontSize: a, color: AppColors.white),
+  );
+}

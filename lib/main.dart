@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plenty/screens/Food/FoodCategoryPage.dart';
+import 'package:plenty/screens/Food/FoodStorePage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:plenty/screens/SignInPage.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: FoodCategoryPage(),
+      home: FoodStorePage(),
     );
   }
 }

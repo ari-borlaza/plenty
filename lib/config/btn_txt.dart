@@ -105,4 +105,14 @@ Container plentyPasswordInput(String hintText,
   );
 }
 
-
+FlatButton addToBasket(onPressed) {
+  return FlatButton.icon(
+    onPressed: onPressed,
+    icon: Icon(Icons.shopping_basket_outlined),
+    label: Text("Add to Basket", style: GoogleFonts.cabin(fontSize: 15)),
+    textColor: AppColors.plentyblue,
+    color: AppColors.white,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    splashColor: AppColors.plentyblue,
+  );
+}

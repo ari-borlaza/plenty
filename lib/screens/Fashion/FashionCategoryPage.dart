@@ -1,25 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/data_list.dart';
 import 'package:plenty/data/plenty_data.dart';
-import 'package:plenty/screens/Food/FoodStorePage.dart';
-import 'package:plenty/screens/SignInPage.dart';
-import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:video_player/video_player.dart';
 
-class FoodCategoryPage extends StatefulWidget {
+class FashionCategoryPage extends StatefulWidget {
   PlentyModel plenty;
 
   @override
-  _FoodCategoryPageState createState() => _FoodCategoryPageState();
+  _FashionCategoryPageState createState() => _FashionCategoryPageState();
 }
 
-class _FoodCategoryPageState extends State<FoodCategoryPage>
+class _FashionCategoryPageState extends State<FashionCategoryPage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
 
@@ -190,31 +185,21 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
   }
 
   Widget _plentyItem(int index) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            PageTransition(
-                type: PageTransitionType.topToBottom,
-                duration: Duration(milliseconds: 500),
-                child: FoodStorePage()));
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image(
-                image: NetworkImage(
-                  foodImgListVert[index],
-                ),
-                width: _size.width / 2,
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              image: NetworkImage(
+                foodImgListVert[index],
               ),
+              width: _size.width / 2,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -283,16 +268,9 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(
-                    context,
-                  );
-                },
-                child: Icon(
-                  CupertinoIcons.chevron_left,
-                  color: Colors.white,
-                ),
+              Icon(
+                CupertinoIcons.chevron_left,
+                color: Colors.white,
               ),
               appBartxt('Fine Dining', 20),
               Icon(

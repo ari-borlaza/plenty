@@ -6,20 +6,16 @@ import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/data_list.dart';
 import 'package:plenty/data/plenty_data.dart';
-import 'package:plenty/screens/Food/FoodStorePage.dart';
-import 'package:plenty/screens/SignInPage.dart';
-import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:video_player/video_player.dart';
 
-class FoodCategoryPage extends StatefulWidget {
+class FoodStorePage extends StatefulWidget {
   PlentyModel plenty;
 
   @override
-  _FoodCategoryPageState createState() => _FoodCategoryPageState();
+  _FoodStorePageState createState() => _FoodStorePageState();
 }
 
-class _FoodCategoryPageState extends State<FoodCategoryPage>
+class _FoodStorePageState extends State<FoodStorePage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
 
@@ -278,29 +274,38 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.pop(
-                    context,
-                  );
-                },
-                child: Icon(
-                  CupertinoIcons.chevron_left,
+        Container(
+          color: AppColors.lightGreen,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  child: Icon(
+                    CupertinoIcons.chevron_left,
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        child: Image.asset('assets/images/logo.png'),
+                      ),
+                      appBartxt('Store 1 Tagline', 8),
+                    ],
+                  ),
+                ),
+                Icon(
+                  //CupertinoIcons.cart_badge_minus,
+                  Icons.shopping_basket_outlined,
                   color: Colors.white,
                 ),
-              ),
-              appBartxt('Fine Dining', 20),
-              Icon(
-                //CupertinoIcons.cart_badge_minus,
-                Icons.shopping_basket_outlined,
-                color: Colors.white,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Container(
@@ -308,27 +313,24 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
           //  color: Colors.green,
         ),
         Container(
-            padding: EdgeInsets.all(
-              25,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                homeWelcome1('Welcome Name, what are you in the mood for?', 15),
-              ],
-            )),
-        _plentyListView(),
+          padding: EdgeInsets.all(
+            25,
+          ),
+        ),
+        //  _plentyListView(),
         Container(
             margin: const EdgeInsets.all(30),
             child: Divider(
               color: Colors.black,
               height: 10,
             )),
-        Padding(
+
+            
+        /*     Padding(
           padding: const EdgeInsets.only(left: 25.0, bottom: 25),
           child: homeWelcome2('Most Popular Items', 15),
-        ),
-        _plentyListView1()
+        ), */
+        // _plentyListView1()
       ],
     );
   }
