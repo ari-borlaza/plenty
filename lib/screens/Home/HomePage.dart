@@ -4,11 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/plenty_data.dart';
-
-import 'package:plenty/screens/Food/FoodCategoryPage.dart';
-import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -148,9 +144,10 @@ class _HomePageState extends State<HomePage>
         Navigator.push(
             context,
             PageTransition(
-                type: PageTransitionType.topToBottom,
-                duration: Duration(milliseconds: 500),
-                child: FoodCategoryPage()));
+              type: PageTransitionType.topToBottom,
+              duration: Duration(milliseconds: 500),
+              child: _plentyData.plentyList[index].link,
+            ));
       },
       child: Container(
         padding: EdgeInsets.only(bottom: 40),
@@ -228,7 +225,7 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-
+/* 
   Widget _buyButton(BuildContext context) {
     return Container(
       height: _size.height * .10,
@@ -266,7 +263,7 @@ class _HomePageState extends State<HomePage>
         ),
       ),
     );
-  }
+  } */
 
   double _plentyDescriptionOpacity(double offset, double activeOffset) {
     double opacity;

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plenty/screens/Fashion/FashionCategoryPage.dart';
+import 'package:plenty/screens/Food/FoodCategoryPage.dart';
 
 class PlentyData {
   List<PlentyModel> plentyList;
@@ -15,6 +17,7 @@ class PlentyData {
         imageText: Image.asset("assets/image/food1.jpeg"),
         videoClipPath: "assets/videos/food.mp4",
         videoClipReflectionPath: "assets/videos/food.mp4",
+        link: FoodCategoryPage(),
       ),
     );
     plentyList.add(
@@ -29,6 +32,7 @@ class PlentyData {
         imageText: Image.asset("assets/image/fashion1.jpeg"),
         videoClipPath: "assets/videos/fashion.mp4",
         videoClipReflectionPath: "assets/videos/fashion.mp4",
+        link: FashionCategoryPage(),
       ),
     );
     plentyList.add(
@@ -43,6 +47,7 @@ class PlentyData {
         imageText: Image.asset("assets/image/salon1.jpeg"),
         videoClipPath: "assets/videos/salon.mp4",
         videoClipReflectionPath: "assets/videos/salon.mp4",
+        link: FashionCategoryPage(),
       ),
     );
   }
@@ -61,6 +66,7 @@ class PlentyModel {
   String videoClipReflectionPath;
   List<PlentyRestModel> restList = List();
   List<PlentyItemModel> itemList = List();
+  dynamic link;
 
   PlentyModel(
       {this.id,
@@ -74,7 +80,8 @@ class PlentyModel {
       this.restList,
       this.videoClipPath,
       this.videoClipReflectionPath,
-      this.itemList});
+      this.itemList,
+      this.link});
 }
 
 class PlentyRestModel {

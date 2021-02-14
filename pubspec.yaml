@@ -38,6 +38,11 @@ dependencies:
   intl: ^0.16.0
   flutter_swiper: ^1.1.6
 
+  grouped_buttons: ^1.0.4
+  circular_check_box: ^1.0.4
+
+  carousel_slider: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

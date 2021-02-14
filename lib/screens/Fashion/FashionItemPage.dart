@@ -7,25 +7,23 @@ import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/config/utils.dart';
-import 'package:plenty/data/food1_list_data.dart';
-import 'package:plenty/data/food_data_list.dart';
-import 'package:plenty/screens/Food/FoodCategoryPage.dart';
+import 'package:plenty/data/fashion_data_list.dart';
+import 'package:plenty/screens/Fashion/FashionCategoryPage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:circular_check_box/circular_check_box.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 
-class FoodItemPage extends StatefulWidget {
+class FashionItemPage extends StatefulWidget {
   @override
-  _FoodItemPageState createState() => _FoodItemPageState();
+  _FashionItemPageState createState() => _FashionItemPageState();
 }
 
-class _FoodItemPageState extends State<FoodItemPage>
+class _FashionItemPageState extends State<FashionItemPage>
     with SingleTickerProviderStateMixin {
-  List<FoodListData> foodList = FoodListData.foodList;
-  List<Map<String, dynamic>> items = foodStore[0]["item"];
-  List<Map<String, dynamic>> itemss = foodStore[0]["item_price"];
+  List<Map<String, dynamic>> items = fashionStore[0]["item"];
+  List<Map<String, dynamic>> itemss = fashionStore[0]["item_price"];
   String description =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id neque libero. Donec finibus sem viverra.';
   String description1 = 'Lorem ipsum dolor sit amet';
@@ -46,13 +44,13 @@ class _FoodItemPageState extends State<FoodItemPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white, body: _foodBody()
+    return Scaffold(backgroundColor: Colors.white, body: _fashionBody()
 
-        //_foodBody(),
+        //_fashionBody(),
         );
   }
 
-  Widget _foodBody() {
+  Widget _fashionBody() {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -210,7 +208,7 @@ class _FoodItemPageState extends State<FoodItemPage>
                     PageTransition(
                         type: PageTransitionType.bottomToTop,
                         duration: Duration(milliseconds: 500),
-                        child: FoodCategoryPage()));
+                        child: FashionCategoryPage()));
               },
               child: Icon(
                 CupertinoIcons.chevron_left,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plenty/config/colors.dart';
 
-class FoodItem extends StatelessWidget {
-  const FoodItem({
+class VerticalItem extends StatelessWidget {
+  const VerticalItem({
     @required this.title,
     Key key,
   }) : super(key: key);

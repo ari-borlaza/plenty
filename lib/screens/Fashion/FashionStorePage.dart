@@ -7,17 +7,17 @@ import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/config/utils.dart';
-import 'package:plenty/data/food_data_list.dart';
-import 'package:plenty/screens/Food/FoodCategoryPage.dart';
-import 'package:plenty/screens/Food/FoodItemPage.dart';
+import 'package:plenty/data/fashion_data_list.dart';
+import 'package:plenty/screens/Fashion/FashionCategoryPage.dart';
+import 'package:plenty/screens/Fashion/FashionItemPage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 
-class FoodStorePage extends StatefulWidget {
+class FashionStorePage extends StatefulWidget {
   @override
-  _FoodStorePageState createState() => _FoodStorePageState();
+  _FashionStorePageState createState() => _FashionStorePageState();
 }
 
-class _FoodStorePageState extends State<FoodStorePage>
+class _FashionStorePageState extends State<FashionStorePage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
 
@@ -27,7 +27,7 @@ class _FoodStorePageState extends State<FoodStorePage>
   final ScrollController _scrollController = ScrollController();
 
   AnimationController animationController;
-  List<Map<String, dynamic>> items = foodStore[0]["item"];
+  List<Map<String, dynamic>> items = fashionStore[0]["item"];
   List<Tab> tabList = List();
   TabController _tabController;
   String description =
@@ -72,13 +72,13 @@ class _FoodStorePageState extends State<FoodStorePage>
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
-          _foodBody(),
+          _fashionBody(),
         ],
       ),
     );
   }
 
-  Widget _foodBody() {
+  Widget _fashionBody() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +113,7 @@ class _FoodStorePageState extends State<FoodStorePage>
                             decoration: BoxDecoration(
                               // color: Colors.yellow,
                               image: DecorationImage(
-                                image: AssetImage('assets/image/food.jpeg'),
+                                image: AssetImage('assets/image/fashion.jpeg'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -126,7 +126,7 @@ class _FoodStorePageState extends State<FoodStorePage>
                     pinned: true,
                     floating: true,
                     delegate: ContestTabHeader(
-                      foodTab(),
+                      fashionTab(),
                     ),
                   ),
                 ];
@@ -150,11 +150,11 @@ class _FoodStorePageState extends State<FoodStorePage>
 
               /*  Container(
               child: ListView.builder(
-                itemCount: foodList.length,
+                itemCount: fashionList.length,
                 padding: const EdgeInsets.only(top: 8),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) {
-                  final int count = foodList.length > 10 ? 10 : foodList.length;
+                  final int count = fashionList.length > 10 ? 10 : fashionList.length;
                   final Animation<double> animation =
                       Tween<double>(begin: 0.0, end: 1.0).animate(
                           CurvedAnimation(
@@ -162,9 +162,9 @@ class _FoodStorePageState extends State<FoodStorePage>
                               curve: Interval((1 / count) * index, 1.0,
                                   curve: Curves.fastOutSlowIn)));
                   animationController.forward();
-                  return FoodListView(
+                  return FashionListView(
                     callback: () {},
-                    foodData: foodList[index],
+                    fashionData: fashionList[index],
                     animation: animation,
                     animationController: animationController,
                   );
@@ -237,7 +237,7 @@ class _FoodStorePageState extends State<FoodStorePage>
                     PageTransition(
                         type: PageTransitionType.bottomToTop,
                         duration: Duration(milliseconds: 500),
-                        child: FoodCategoryPage()));
+                        child: FashionCategoryPage()));
               },
               child: Icon(
                 CupertinoIcons.chevron_left,
@@ -267,7 +267,7 @@ class _FoodStorePageState extends State<FoodStorePage>
     );
   }
 
-  Widget foodTab() {
+  Widget fashionTab() {
     return Container(
       decoration: new BoxDecoration(color: AppColors.sadagreen),
       child: new TabBar(
@@ -307,7 +307,7 @@ class _FoodStorePageState extends State<FoodStorePage>
             PageTransition(
                 type: PageTransitionType.topToBottom,
                 duration: Duration(milliseconds: 500),
-                child: FoodItemPage()));
+                child: FashionItemPage()));
       },
       child: Container(
         height: 96,
@@ -362,14 +362,14 @@ class _FoodStorePageState extends State<FoodStorePage>
 
 class ContestTabHeader extends SliverPersistentHeaderDelegate {
   ContestTabHeader(
-    this.foodTab,
+    this.fashionTab,
   );
-  final Widget foodTab;
+  final Widget fashionTab;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return foodTab;
+    return fashionTab;
   }
 
   @override
