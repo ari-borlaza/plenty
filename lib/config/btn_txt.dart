@@ -44,6 +44,19 @@ FlatButton plentyFlatBtn1(String text, onPressed) {
   );
 }
 
+FlatButton plentyFlatBtn2(String text, onPressed) {
+  return FlatButton(
+    height: 20,
+    padding: EdgeInsets.all(0),
+    onPressed: onPressed,
+    child: Text(text, style: GoogleFonts.cabin(fontSize: 10)),
+    textColor: AppColors.white,
+    color: AppColors.sadagreen,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    splashColor: AppColors.txtfields,
+  );
+}
+
 OutlineButton plentyOutlineBtn(String text, onPressed) {
   return OutlineButton(
     onPressed: onPressed,

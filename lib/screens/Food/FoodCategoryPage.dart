@@ -5,16 +5,13 @@ import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/food_data_list.dart';
-import 'package:plenty/data/plenty_data.dart';
 import 'package:plenty/screens/Food/FoodStorePage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
-import 'package:plenty/screens/SignInPage.dart';
-import 'package:plenty/widget/app_widget.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:video_player/video_player.dart';
 
 class FoodCategoryPage extends StatefulWidget {
-  PlentyModel plenty;
+
+
 
   @override
   _FoodCategoryPageState createState() => _FoodCategoryPageState();

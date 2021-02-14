@@ -3,18 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/config/utils.dart';
 import 'package:plenty/data/food1_list_data.dart';
 import 'package:plenty/data/food_data_list.dart';
-import 'package:plenty/data/plenty_data.dart';
 import 'package:plenty/screens/Food/FoodCategoryPage.dart';
+import 'package:plenty/screens/Food/FoodItemPage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 
 class FoodStorePage extends StatefulWidget {
-  PlentyModel plenty;
-
   @override
   _FoodStorePageState createState() => _FoodStorePageState();
 }
@@ -114,7 +113,7 @@ class _FoodStorePageState extends State<FoodStorePage>
                           Container(
                             height: 250,
                             decoration: BoxDecoration(
-                              color: Colors.yellow,
+                              // color: Colors.yellow,
                               image: DecorationImage(
                                 image: AssetImage('assets/image/food.jpeg'),
                                 fit: BoxFit.fill,
@@ -142,10 +141,10 @@ class _FoodStorePageState extends State<FoodStorePage>
                     controller: _tabController,
                     children: <Widget>[
                       itemList(),
-                      HomePage(),
-                      HomePage(),
-                      HomePage(),
-                      HomePage(),
+                      itemList(),
+                      itemList(),
+                      itemList(),
+                      itemList()
                     ],
                   ),
                 ),
@@ -182,6 +181,45 @@ class _FoodStorePageState extends State<FoodStorePage>
           child: homeWelcome2('Most Popular Items', 15),
         ), */
         // _plentyListView1()
+
+        ,
+        Container(
+          color: AppColors.white,
+          child: Container(
+            decoration: BoxDecoration(
+                color: AppColors.txtfields,
+                borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.shopping_basket_outlined, color: Colors.black),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    itemTxt1('View Basket', 14, AppColors.greysss,
+                        FontWeight.normal),
+                  ],
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Row(
+                  children: [
+                    itemTxt1('Total', 15, AppColors.black, FontWeight.bold),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    itemTxt1('SAR #', 15, AppColors.black, FontWeight.bold),
+                  ],
+                )
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
@@ -242,7 +280,7 @@ class _FoodStorePageState extends State<FoodStorePage>
           unselectedLabelColor: AppColors.white,
           isScrollable: true,
           controller: _tabController,
-          indicatorColor: AppColors.red,
+          indicatorColor: AppColors.black,
           indicatorSize: TabBarIndicatorSize.tab,
           tabs: tabList),
     );
@@ -255,10 +293,70 @@ class _FoodStorePageState extends State<FoodStorePage>
       padding: EdgeInsets.all(16),
       reAnimateOnVisibility: true,
       scrollDirection: Axis.vertical,
-      itemCount: 20,
+      itemCount: items.length,
       itemBuilder: animationItemBuilder(
-        (index) => FoodItem(title: index.toString()),
+        (index) => itemTile(index),
         padding: EdgeInsets.symmetric(vertical: 8),
+      ),
+    );
+  }
+
+  Widget itemTile(int index) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.topToBottom,
+                duration: Duration(milliseconds: 500),
+                child: FoodItemPage()));
+      },
+      child: Container(
+        height: 96,
+        child: Card(
+          shadowColor: AppColors.greyss,
+          elevation: 5,
+          //color: AppColors.yellow,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 50,
+                height: 100,
+                margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        items[index]["image"],
+                      ),
+                      fit: BoxFit
+                          .cover, /* 
+                      colorFilter: ColorFilter.mode(
+                          Colors.white.withOpacity(0.9), BlendMode.lighten), */
+                    )),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  itemTxt2(items[index]["item_name"], 15),
+                  itemTxt2(items[index]["item_desc"], 8),
+                  Row(
+                    children: [
+                      itemTxt2('SAR ', 10),
+                      itemTxt2(items[index]["item_price"], 20),
+                    ],
+                  )
+                ],
+              ),
+              Align(
+                  alignment: Alignment.bottomLeft,
+                  child: plentyFlatBtn2('Add to basket', () {}))
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -286,44 +384,4 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
     return false;
   }
-}
-
-class FoodItem extends StatelessWidget {
-  const FoodItem({
-    @required this.title,
-    Key key,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) => Container(
-        height: 96,
-        child: Card(
-          color: AppColors.yellow,
-          child: Row(
-            children: [
-              Container(
-                width: 100,
-                height: 100,
-                margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/logo.png'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                          Colors.white.withOpacity(0.9), BlendMode.lighten),
-                    )),
-              ),
-              Text(
-                '$title a long title',
-                style: TextStyle(
-                  color: Colors.red,
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
 }
