@@ -4,7 +4,11 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/plenty_data.dart';
+import 'package:plenty/screens/Home/RewardCard.dart';
+import 'package:plenty/screens/sample/bgvid.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
+
+import 'package:video_player/video_player.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,6 +24,7 @@ class _HomePageState extends State<HomePage>
   double get _plentyItemWidth => _size.width / 2 + 48;
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
+  VideoPlayerController _controller;
   double _maxPlentyTranslate = 65;
   int _plentyIndex = 0;
 
@@ -36,10 +41,9 @@ class _HomePageState extends State<HomePage>
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           _backgroundListView(),
-
           _homeHeader(),
           _plentyListView(),
-          // _buyButton(context)
+          // BackgroundVideo()
         ],
       ),
     );
@@ -83,18 +87,6 @@ class _HomePageState extends State<HomePage>
                       stops: [0.1, 0.5, 0.9]),
                 ),
               ),
-              /* Container(
-                height: _size.height * .25,
-                padding:
-                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image(
-                    width: _size.width / 1.8,
-                    image: _plentyData.plentyList[index].imageText.image,
-                  ),
-                ),
-              ), */
             ],
           ),
         );
@@ -173,25 +165,6 @@ class _HomePageState extends State<HomePage>
                             fontSize: _size.width / 14,
                             fontWeight: FontWeight.w700),
                       ),
-                      /*  SizedBox(
-                        height: _size.height * .01,
-                      ),
-                      AppWidget.genresFormat(
-                          _plentyData.plentyList[index].genre, Colors.white),
-                      SizedBox(
-                        height: _size.height * .01,
-                      ),
-                      Text(
-                        _plentyData.plentyList[index].rating.toString(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _size.width / 16,
-                        ),
-                      ),
-                      SizedBox(
-                        height: _size.height * .005,
-                      ),
-                      AppWidget.starRating(_plentyData.plentyList[index].rating) */
                     ],
                   ),
                 );
@@ -225,45 +198,6 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-/* 
-  Widget _buyButton(BuildContext context) {
-    return Container(
-      height: _size.height * .10,
-      margin: EdgeInsets.symmetric(horizontal: 32),
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: FlatButton(
-          color: AppColor.primary,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          onPressed: () {
-            /*  Navigator.push(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (ctx, a1, a2) => DetailScreen(
-                  plenty: _plentyData.plentyList[_plentyIndex],
-                  size: _size,
-                ),
-              ),
-            ); */
-          },
-          child: Container(
-            width: double.infinity,
-            height: _size.height * .08,
-            child: Center(
-              child: Text(
-                'Buy Ticket',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  } */
 
   double _plentyDescriptionOpacity(double offset, double activeOffset) {
     double opacity;
@@ -334,7 +268,12 @@ class _HomePageState extends State<HomePage>
                       Icons.person,
                       color: Colors.white,
                     ),
-                    homeWelcome1('Welcome, Name', 30),
+                    homeWelcome3('Welcome, Name', 30, () {Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 1000),
+                                child: Rewards()));}),
                   ],
                 ),
                 SizedBox(

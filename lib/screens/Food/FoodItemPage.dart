@@ -149,6 +149,7 @@ class _FoodItemPageState extends State<FoodItemPage>
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     FloatingActionButton(
+                        heroTag: null,
                         mini: true,
                         onPressed: minus,
                         child: Icon(
@@ -158,6 +159,7 @@ class _FoodItemPageState extends State<FoodItemPage>
                         backgroundColor: AppColors.sadagreen),
                     itemTxt1('$_n', 40, AppColors.black, FontWeight.bold),
                     FloatingActionButton(
+                      heroTag: null,
                       mini: true,
                       onPressed: add,
                       child: new Icon(

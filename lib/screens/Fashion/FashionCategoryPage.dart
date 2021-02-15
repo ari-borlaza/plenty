@@ -312,7 +312,8 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                homeWelcome1('Welcome Name, what are you in the mood for?', 15),
+                homeWelcome1(
+                    'Welcome Name, checkout the latest fashion trends', 15),
               ],
             )),
         _plentyListView(),

@@ -27,36 +27,22 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        // Adjusted theme colors to match logo.
-        primaryColor: Color(0xffb55e28),
-        accentColor: Color(0xffffd544),
-      ),
-      home: SafeArea(
-        child: Scaffold(
-          // TODO 6: Create a Stack Widget
-          body: Stack(
-            children: <Widget>[
-              // TODO 7: Add a SizedBox to contain our video.
-              SizedBox.expand(
-                child: FittedBox(
-                  // If your background video doesn't look right, try changing the BoxFit property.
-                  // BoxFit.fill created the look I was going for.
-                  fit: BoxFit.fill,
-                  child: SizedBox(
-                    width: _controller.value.size?.width ?? 0,
-                    height: _controller.value.size?.height ?? 0,
-                    child: VideoPlayer(_controller),
-                  ),
-                ),
-              ),
-              LoginWidget()
-            ],
+    return Stack(children: <Widget>[
+      // TODO 7: Add a SizedBox to contain our video.
+      SizedBox.expand(
+        child: FittedBox(
+          // If your background video doesn't look right, try changing the BoxFit property.
+          // BoxFit.fill created the look I was going for.
+          fit: BoxFit.fill,
+          child: SizedBox(
+            width: _controller.value.size?.width ?? 0,
+            height: _controller.value.size?.height ?? 0,
+            child: VideoPlayer(_controller),
           ),
         ),
       ),
-    );
+      //LoginWidget()
+    ]);
   }
 
   // TODO 8: Override the dipose() method to cleanup the video controller.
@@ -68,7 +54,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
 }
 
 // A basic login widget with a logo and a form with rounded corners.
-class LoginWidget extends StatelessWidget {
+/* class LoginWidget extends StatelessWidget {
   const LoginWidget({
     Key key,
   }) : super(key: key);
@@ -135,3 +121,4 @@ class LoginWidget extends StatelessWidget {
     );
   }
 }
+ */

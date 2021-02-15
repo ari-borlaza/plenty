@@ -24,8 +24,6 @@ class PlentyData {
       PlentyModel(
         id: 1,
         category: 'Fashion',
-        rating: 4.0,
-        genre: ["Action", "Adventure"],
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
         image: Image.asset("assets/image/fashion.jpeg"),
@@ -38,9 +36,7 @@ class PlentyData {
     plentyList.add(
       PlentyModel(
         id: 2,
-        category: 'Salon',
-        rating: 7.0,
-        genre: ["Action", "Adventure"],
+        category: 'Beauty',
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
         image: Image.asset("assets/image/salon.jpeg"),

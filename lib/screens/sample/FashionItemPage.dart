@@ -6,13 +6,9 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/config/utils.dart';
 import 'package:plenty/data/fashion_data_list.dart';
 import 'package:plenty/screens/Fashion/FashionCategoryPage.dart';
-import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:circular_check_box/circular_check_box.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 
 class FashionItemPage extends StatefulWidget {
@@ -147,6 +143,7 @@ class _FashionItemPageState extends State<FashionItemPage>
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     FloatingActionButton(
+                        heroTag: null,
                         mini: true,
                         onPressed: minus,
                         child: Icon(
@@ -156,6 +153,7 @@ class _FashionItemPageState extends State<FashionItemPage>
                         backgroundColor: AppColors.sadagreen),
                     itemTxt1('$_n', 40, AppColors.black, FontWeight.bold),
                     FloatingActionButton(
+                      heroTag: null,
                       mini: true,
                       onPressed: add,
                       child: new Icon(

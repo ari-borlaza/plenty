@@ -29,7 +29,7 @@ dependencies:
   animated_text_kit: ^3.1.0
   sign_button: ^1.0.2
   auth_buttons: ^0.0.5
-  video_player: ^0.10.11+2
+  video_player: ^1.0.1
   scroll_snap_list: ^0.4.1
   rubber: ^0.4.0
   flutter_svg: 0.19.0
@@ -37,11 +37,13 @@ dependencies:
   smooth_star_rating: ^1.1.1
   intl: ^0.16.0
   flutter_swiper: ^1.1.6
-
+  line_icons: ^0.2.0
   grouped_buttons: ^1.0.4
   circular_check_box: ^1.0.4
-
   carousel_slider: ^3.0.0
+  credit_card_input_form: ^2.1.6
+
+  getwidget: ^1.2.4
 
 dev_dependencies:
   flutter_test:
@@ -53,5 +55,6 @@ flutter:
   - assets/images/
   - assets/image/
   - assets/videos/
+  - assets/icons/
 
 

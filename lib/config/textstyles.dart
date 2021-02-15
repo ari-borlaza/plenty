@@ -30,6 +30,16 @@ Widget logWelcome1(String txt1, double a) {
   );
 }
 
+Widget homeWelcome3(String txt1, double a, dynamic onTap) {
+  return TypewriterAnimatedTextKit(
+    onTap: onTap,
+    text: [txt1],
+    textStyle: GoogleFonts.oswald(fontSize: a, color: AppColors.white),
+    textAlign: TextAlign.start,
+    pause: Duration(milliseconds: 30000),
+  );
+}
+
 Widget homeWelcome1(String txt1, double a) {
   return TypewriterAnimatedTextKit(
     onTap: () {
@@ -70,6 +80,13 @@ Text appBartxt(String txt, double a) {
   return Text(
     txt,
     style: GoogleFonts.oswald(fontSize: a, color: AppColors.white),
+  );
+}
+
+Text appBartxt1(String txt, double a) {
+  return Text(
+    txt,
+    style: GoogleFonts.oswald(fontSize: a, color: AppColors.black),
   );
 }
 
