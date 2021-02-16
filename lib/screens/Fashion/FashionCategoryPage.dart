@@ -22,9 +22,15 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _plentyScrollController1 = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
-  double _maxPlentyTranslate = 65;
+
   int _plentyIndex = 0;
   List<Map<String, dynamic>> items = fashionStore[0]["item"];
+  @override
+  void dispose() {
+    super.dispose();
+    _plentyScrollController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     _plentyScrollController.addListener(() {
@@ -37,12 +43,11 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
     }); */
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white70,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           _backgroundListView(),
-
           _fashionBody(),
           // _buyButton(context)
         ],
@@ -121,7 +126,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
         );
       },
       child: Container(
-        height: _size.height * .35,
+        height: _size.height * .38,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -206,6 +211,8 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
                   fashionImgListVert[index],
                 ),
                 width: _size.width / 2,
+                height: 250,
+                fit: BoxFit.cover,
               ),
             ),
           ],
@@ -231,7 +238,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
                   image: NetworkImage(
                     items[index]["image"],
                   ),
-                  width: _size.width / 3.2,
+                  width: _size.width / 4,
                 ),
               ),
               Padding(
@@ -263,18 +270,22 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             ],
           ),
         ),
-        Positioned(bottom: 0, right: 15, left: 15, child: addToBasket(() {}))
+        Positioned(
+            bottom: 0,
+            right: 15,
+            left: 15,
+            child: FittedBox(child: addToBasket(() {})))
       ],
     );
   }
 
   Widget _fashionBody() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+          padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -302,10 +313,6 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
           ),
         ),
         Container(
-          height: 10,
-          //  color: Colors.green,
-        ),
-        Container(
             padding: EdgeInsets.all(
               25,
             ),
@@ -318,13 +325,13 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             )),
         _plentyListView(),
         Container(
-            margin: const EdgeInsets.all(30),
+            margin: const EdgeInsets.all(5),
             child: Divider(
               color: Colors.black,
               height: 10,
             )),
         Padding(
-          padding: const EdgeInsets.only(left: 25.0, bottom: 25),
+          padding: const EdgeInsets.only(left: 25.0, bottom: 15),
           child: homeWelcome2('Most Popular Items', 15),
         ),
         _plentyListView1()

@@ -31,6 +31,19 @@ FlatButton plentyFlatBtn(String text, onPressed) {
   );
 }
 
+FlatButton plentyFlatBtn3(String text, onPressed) {
+  return FlatButton.icon(
+    icon: Icon(Icons.wallet_giftcard),
+    minWidth: double.infinity,
+    onPressed: onPressed,
+    label: Text(text, style: GoogleFonts.cabin(fontSize: 15)),
+    textColor: AppColors.white,
+    color: AppColors.black,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    splashColor: AppColors.txtfields,
+  );
+}
+
 FlatButton plentyFlatBtn1(String text, onPressed) {
   return FlatButton.icon(
     icon: Icon(CupertinoIcons.chevron_left),

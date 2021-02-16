@@ -172,15 +172,15 @@ class _FashionBodyState extends State<FashionBody>
   Widget gridProducts(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: LiveGrid(
           reAnimateOnVisibility: true,
           itemCount: products.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: kDefaultPaddin,
-            crossAxisSpacing: kDefaultPaddin,
-            childAspectRatio: 0.85,
+            mainAxisSpacing: 0,
+            crossAxisSpacing: 15,
+            childAspectRatio: 0.8,
           ),
           itemBuilder: animationItemBuilder(
             (index) => ItemCard(
@@ -202,10 +202,9 @@ class _FashionBodyState extends State<FashionBody>
   Widget appBarr() {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.sadagreen,
+        // color: AppColors.sadagreen,
         image: DecorationImage(
-          image: NetworkImage(
-              'https://thumbs.dreamstime.com/b/arabesque-star-pattern-light-grey-background-vector-illustration-48711651.jpg'),
+          image: AssetImage('assets/image/Store Banner.jpg'),
           fit: BoxFit.fitWidth,
         ),
       ),

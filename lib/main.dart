@@ -5,6 +5,7 @@ import 'package:plenty/screens/Food/FoodItemPage.dart';
 import 'package:plenty/screens/Food/FoodStorePage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:plenty/screens/Home/RewardCard.dart';
+import 'package:plenty/screens/Home/SignInPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Rewards(),
+      home: SignInPage(),
     );
   }
 }

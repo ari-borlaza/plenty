@@ -10,9 +10,6 @@ import 'package:plenty/screens/Home/HomePage.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class FoodCategoryPage extends StatefulWidget {
-
-
-
   @override
   _FoodCategoryPageState createState() => _FoodCategoryPageState();
 }
@@ -25,7 +22,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _plentyScrollController1 = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
-  double _maxPlentyTranslate = 65;
+
   int _plentyIndex = 0;
   List<Map<String, dynamic>> items = foodStore[0]["item"];
   @override
@@ -40,7 +37,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
     }); */
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white70,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
@@ -55,6 +52,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
 
   Widget _backgroundListView() {
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       controller: _backgroundScrollController,
       padding: EdgeInsets.zero,
       reverse: true,
@@ -124,7 +122,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         );
       },
       child: Container(
-        height: _size.height * .35,
+        height: _size.height * .38,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -143,7 +141,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             itemCount: foodImgListVert.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return _plentyItem(index);
+              return FittedBox(child: _plentyItem(index));
             },
           ),
         ),
@@ -209,6 +207,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                   foodImgListVert[index],
                 ),
                 width: _size.width / 2,
+                height: 250,
               ),
             ),
           ],
@@ -234,7 +233,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                   image: NetworkImage(
                     items[index]["image"],
                   ),
-                  width: _size.width / 3.2,
+                  width: _size.width / 4,
                 ),
               ),
               Padding(
@@ -266,18 +265,22 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             ],
           ),
         ),
-        Positioned(bottom: 0, right: 15, left: 15, child: addToBasket(() {}))
+        Positioned(
+            bottom: 0,
+            right: 15,
+            left: 15,
+            child: FittedBox(child: addToBasket(() {})))
       ],
     );
   }
 
   Widget _foodBody() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
+          padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -305,10 +308,6 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
           ),
         ),
         Container(
-          height: 10,
-          //  color: Colors.green,
-        ),
-        Container(
             padding: EdgeInsets.all(
               25,
             ),
@@ -320,13 +319,13 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             )),
         _plentyListView(),
         Container(
-            margin: const EdgeInsets.all(30),
+            margin: const EdgeInsets.all(10),
             child: Divider(
               color: Colors.black,
               height: 10,
             )),
         Padding(
-          padding: const EdgeInsets.only(left: 25.0, bottom: 25),
+          padding: const EdgeInsets.only(left: 25.0, bottom: 15),
           child: homeWelcome2('Most Popular Items', 15),
         ),
         _plentyListView1()

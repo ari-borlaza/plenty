@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage>
     });
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white70,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
@@ -61,18 +61,15 @@ class _HomePageState extends State<HomePage>
           width: _size.width,
           height: _size.height,
           child: Stack(
+            fit: StackFit.expand,
             alignment: Alignment.topCenter,
             children: <Widget>[
-              Positioned(
-                left: -_size.width / 3,
-                right: -_size.width / 3,
-                child: Image(
-                  image: _plentyData.plentyList[index].image.image,
-                  fit: BoxFit.cover,
-                ),
+              Image(
+                image: _plentyData.plentyList[index].image1.image,
+                fit: BoxFit.cover,
               ),
               Container(
-                color: Colors.white.withOpacity(.6),
+                color: Colors.white.withOpacity(.4),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -251,37 +248,41 @@ class _HomePageState extends State<HomePage>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 70,
-          //  color: Colors.green,
-        ),
-        Container(
-            padding: EdgeInsets.all(
-              25,
-            ),
+            padding: EdgeInsets.fromLTRB(25, 50, 25, 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.person,
                       color: Colors.white,
                     ),
-                    homeWelcome3('Welcome, Name', 30, () {Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                duration: Duration(milliseconds: 1000),
-                                child: Rewards()));}),
+                    homeWelcome3('Welcome, Name', 20, () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.topToBottom,
+                              duration: Duration(milliseconds: 1000),
+                              child: Rewards()));
+                    }),
                   ],
                 ),
-                SizedBox(
-                  width: 100,
-                ),
-                Icon(
-                  Icons.menu,
-                  color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 1000),
+                            child: Rewards()));
+                  },
+                  child: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             )),
@@ -293,6 +294,12 @@ class _HomePageState extends State<HomePage>
               left: 50,
             ),
             child: homeChoose1('Experience', 30)),
+        Container(
+            margin: const EdgeInsets.only(left: 40.0, right: 150.0),
+            child: Divider(
+              color: Colors.grey,
+              height: 10,
+            ))
       ],
     );
   }

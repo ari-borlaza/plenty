@@ -13,10 +13,8 @@ class PlentyData {
         category: 'Fine Dining',
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
-        image: Image.asset("assets/image/food.jpeg"),
-        imageText: Image.asset("assets/image/food1.jpeg"),
-        videoClipPath: "assets/videos/food.mp4",
-        videoClipReflectionPath: "assets/videos/food.mp4",
+        image: Image.asset("assets/image/dine.png"),
+        image1: Image.asset('assets/image/dinetab_6sec.gif'),
         link: FoodCategoryPage(),
       ),
     );
@@ -26,10 +24,8 @@ class PlentyData {
         category: 'Fashion',
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
-        image: Image.asset("assets/image/fashion.jpeg"),
-        imageText: Image.asset("assets/image/fashion1.jpeg"),
-        videoClipPath: "assets/videos/fashion.mp4",
-        videoClipReflectionPath: "assets/videos/fashion.mp4",
+        image: Image.asset("assets/image/fashion.png"),
+        image1: Image.asset('assets/image/fashiontab_6sec.gif'),
         link: FashionCategoryPage(),
       ),
     );
@@ -39,10 +35,8 @@ class PlentyData {
         category: 'Beauty',
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
-        image: Image.asset("assets/image/salon.jpeg"),
-        imageText: Image.asset("assets/image/salon1.jpeg"),
-        videoClipPath: "assets/videos/salon.mp4",
-        videoClipReflectionPath: "assets/videos/salon.mp4",
+        image: Image.asset("assets/image/beauty.png"),
+        image1: Image.asset('assets/image/beautytab_6sec.gif'),
         link: FashionCategoryPage(),
       ),
     );
@@ -63,21 +57,24 @@ class PlentyModel {
   List<PlentyRestModel> restList = List();
   List<PlentyItemModel> itemList = List();
   dynamic link;
+  Image image1;
 
-  PlentyModel(
-      {this.id,
-      this.genre,
-      this.restoname,
-      this.category,
-      this.rating,
-      this.description,
-      this.image,
-      this.imageText,
-      this.restList,
-      this.videoClipPath,
-      this.videoClipReflectionPath,
-      this.itemList,
-      this.link});
+  PlentyModel({
+    this.id,
+    this.genre,
+    this.restoname,
+    this.category,
+    this.rating,
+    this.description,
+    this.image,
+    this.imageText,
+    this.restList,
+    this.videoClipPath,
+    this.videoClipReflectionPath,
+    this.itemList,
+    this.link,
+    this.image1,
+  });
 }
 
 class PlentyRestModel {

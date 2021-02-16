@@ -42,7 +42,8 @@ dependencies:
   circular_check_box: ^1.0.4
   carousel_slider: ^3.0.0
   credit_card_input_form: ^2.1.6
-
+  flip_card: ^0.4.4
+  flutter_datetime_picker: ^1.5.0
   getwidget: ^1.2.4
 
 dev_dependencies:
@@ -54,7 +55,6 @@ flutter:
   assets:
   - assets/images/
   - assets/image/
-  - assets/videos/
   - assets/icons/
 
 
