@@ -23,8 +23,8 @@ class ProductTitleWithImage extends StatelessWidget {
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             return FittedBox(
-              child: Card(
-                elevation: 5,
+              child: Container(
+                // color: Colors.greenAccent,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

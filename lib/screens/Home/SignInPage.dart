@@ -49,15 +49,16 @@ class _SignInPageState extends State<SignInPage> {
             ),
             Container(
               width: 300,
-              height: 100,
+              height: 200,
               margin: EdgeInsets.all(30),
               decoration: BoxDecoration(
                   color: Colors.transparent,
                   image: DecorationImage(
-                    image: AssetImage('assets/images/logo.png'),
-                    fit: BoxFit.cover,
+                    image: AssetImage('assets/icons/Plenty Logo.png'),
+                    fit: BoxFit
+                        .cover, /* 
                     colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.9), BlendMode.lighten),
+                        Colors.white.withOpacity(0.9), BlendMode.lighten), */
                   )),
             ),
             plentyTextInput('E-mail'),

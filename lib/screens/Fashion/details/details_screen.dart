@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:plenty/config/constants.dart';
 import 'package:plenty/data/fashion_product.dart';
 
@@ -28,8 +28,8 @@ class DetailsScreen extends StatelessWidget {
       backgroundColor: product.color,
       elevation: 0,
       leading: IconButton(
-        icon: SvgPicture.asset(
-          'assets/icons/back.svg',
+        icon: Icon(
+          CupertinoIcons.chevron_back,
           color: Colors.white,
         ),
         onPressed: () => Navigator.pop(context),

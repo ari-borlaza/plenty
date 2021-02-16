@@ -141,7 +141,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             itemCount: foodImgListVert.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return FittedBox(child: _plentyItem(index));
+              return _plentyItem(index);
             },
           ),
         ),

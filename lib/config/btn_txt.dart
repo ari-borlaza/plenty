@@ -44,6 +44,18 @@ FlatButton plentyFlatBtn3(String text, onPressed) {
   );
 }
 
+FlatButton plentyFlatBtn4(String text, onPressed) {
+  return FlatButton(
+    minWidth: double.infinity,
+    onPressed: onPressed,
+    child: Text(text, style: GoogleFonts.cabin(fontSize: 15)),
+    textColor: AppColors.white,
+    color: AppColors.black,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    splashColor: AppColors.txtfields,
+  );
+}
+
 FlatButton plentyFlatBtn1(String text, onPressed) {
   return FlatButton.icon(
     icon: Icon(CupertinoIcons.chevron_left),

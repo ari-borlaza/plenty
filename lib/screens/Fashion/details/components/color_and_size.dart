@@ -51,7 +51,10 @@ class ColorAndSize extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        plentyFlatBtn("View Designers Products", () {})
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: plentyFlatBtn4("View Designers Products", () {}),
+        )
       ],
     );
   }
