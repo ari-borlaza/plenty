@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plenty/screens/Beauty/BeautyCategoryPage.dart';
 import 'package:plenty/screens/Fashion/FashionCategoryPage.dart';
 import 'package:plenty/screens/Food/FoodCategoryPage.dart';
 
@@ -21,22 +22,22 @@ class PlentyData {
     plentyList.add(
       PlentyModel(
         id: 1,
-        category: 'Fashion',
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
-        image: Image.asset("assets/image/fashion.png"),
-        image1: Image.asset('assets/image/fashiontab_6sec.gif'),
-        link: FashionCategoryPage(),
-      ),
-    );
-    plentyList.add(
-      PlentyModel(
-        id: 2,
         category: 'Beauty',
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
         image: Image.asset("assets/image/beauty.png"),
         image1: Image.asset('assets/image/beautytab_6sec.gif'),
+        link: BeautyCategoryPage(),
+      ),
+    );
+    plentyList.add(
+      PlentyModel(
+        id: 2,
+        category: 'Fashion',
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis convallis tellus id interdum velit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.",
+        image: Image.asset("assets/image/fashion.png"),
+        image1: Image.asset('assets/image/fashiontab_6sec.gif'),
         link: FashionCategoryPage(),
       ),
     );

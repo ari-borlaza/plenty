@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage>
   double get _plentyItemWidth => _size.width / 2 + 48;
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
-  VideoPlayerController _controller;
   double _maxPlentyTranslate = 65;
   int _plentyIndex = 0;
 
@@ -103,7 +102,7 @@ class _HomePageState extends State<HomePage>
         );
       },
       child: Container(
-        height: _size.height * .75,
+        height: _size.height * .8,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -167,9 +166,9 @@ class _HomePageState extends State<HomePage>
                 );
               },
             ),
-            SizedBox(
+            /* SizedBox(
               height: _size.height * .02,
-            ),
+            ), */
             AnimatedBuilder(
               animation: _plentyScrollController,
               builder: (ctx, child) {
@@ -187,6 +186,7 @@ class _HomePageState extends State<HomePage>
               borderRadius: BorderRadius.circular(20),
               child: Image(
                 image: _plentyData.plentyList[index].image.image,
+                height: 350,
                 width: _size.width / 2,
               ),
             ),

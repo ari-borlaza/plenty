@@ -4,18 +4,16 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/colors.dart';
 import 'package:plenty/config/textstyles.dart';
-import 'package:plenty/data/fashion_data_list.dart';
-import 'package:plenty/screens/Fashion/FashionStorePage.dart';
+import 'package:plenty/data/beauty_data_list.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
-import 'package:plenty/screens/Home/MyBag.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
-class FashionCategoryPage extends StatefulWidget {
+class BeautyCategoryPage extends StatefulWidget {
   @override
-  _FashionCategoryPageState createState() => _FashionCategoryPageState();
+  _BeautyCategoryPageState createState() => _BeautyCategoryPageState();
 }
 
-class _FashionCategoryPageState extends State<FashionCategoryPage>
+class _BeautyCategoryPageState extends State<BeautyCategoryPage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
 
@@ -25,13 +23,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
   ScrollController _backgroundScrollController = ScrollController();
 
   int _plentyIndex = 0;
-  List<Map<String, dynamic>> items = fashionStore[0]["item"];
-  @override
-  void dispose() {
-    super.dispose();
-    _plentyScrollController.dispose();
-  }
-
+  List<Map<String, dynamic>> items = beautyStore[0]["item"];
   @override
   Widget build(BuildContext context) {
     _plentyScrollController.addListener(() {
@@ -49,7 +41,8 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           _backgroundListView(),
-          _fashionBody(),
+
+          _beautyBody(),
           // _buyButton(context)
         ],
       ),
@@ -58,10 +51,11 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
 
   Widget _backgroundListView() {
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       controller: _backgroundScrollController,
       padding: EdgeInsets.zero,
       reverse: true,
-      itemCount: fashionImgListVert.length,
+      itemCount: beautyImgListVert.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx, index) {
         return Container(
@@ -71,11 +65,11 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             alignment: Alignment.topCenter,
             children: <Widget>[
               Positioned(
-                left: -_size.width / 3,
-                right: -_size.width / 3,
+                left: -_size.width / 2,
+                right: -_size.width / 2,
                 child: Image(
                   image: AssetImage(
-                    fashionImgListVert[index],
+                    beautyImgListVert[index],
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -136,14 +130,14 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
           child: ScrollSnapList(
             listController: _plentyScrollController,
             onItemFocus: (item) {
-              items = fashionStore[item]["item"];
+              items = beautyStore[item]["item"];
               setState(() {
                 _plentyIndex = item;
               });
             },
             itemSize: _plentyItemWidth,
             //padding: EdgeInsets.zero,
-            itemCount: fashionImgListVert.length,
+            itemCount: beautyImgListVert.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return _plentyItem(index);
@@ -192,14 +186,14 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
 
   Widget _plentyItem(int index) {
     return InkWell(
-      onTap: () {
+      /*    onTap: () {
         Navigator.push(
             context,
             PageTransition(
                 type: PageTransitionType.topToBottom,
                 duration: Duration(milliseconds: 500),
-                child: FashionStorePage()));
-      },
+                child: BeautyStorePage()));
+      }, */
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 24),
         child: ClipRRect(
@@ -207,10 +201,10 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
           child: Image(
             fit: BoxFit.cover,
             image: AssetImage(
-              fashionImgListVert[index],
+              beautyImgListVert[index],
             ),
             width: _size.width / 2,
-            //  height: 250,
+            //   height: 250,
           ),
         ),
       ),
@@ -275,7 +269,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
     );
   }
 
-  Widget _fashionBody() {
+  Widget _beautyBody() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -299,21 +293,11 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
                   color: Colors.white,
                 ),
               ),
-              appBartxt('Fashion', 20),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.bottomToTop,
-                          duration: Duration(milliseconds: 500),
-                          child: MyBag()));
-                },
-                child: Icon(
-                  //CupertinoIcons.cart_badge_minus,
-                  Icons.shopping_basket_outlined,
-                  color: Colors.white,
-                ),
+              appBartxt('Beauty', 20),
+              Icon(
+                //CupertinoIcons.cart_badge_minus,
+                Icons.shopping_basket_outlined,
+                color: Colors.white,
               ),
             ],
           ),
@@ -325,13 +309,12 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                homeWelcome1(
-                    'Welcome Name, checkout the latest fashion trends', 15),
+                homeWelcome1('Welcome Name, what are you in the mood for?', 15),
               ],
             )),
         _plentyListView(),
         Container(
-            margin: const EdgeInsets.all(5),
+            margin: const EdgeInsets.all(10),
             child: Divider(
               color: Colors.black,
               height: 10,

@@ -18,7 +18,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
 
-  double get _plentyItemWidth => _size.width / 2 + 48;
+  double get _plentyItemWidth => _size.width;
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _plentyScrollController1 = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
@@ -66,10 +66,10 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             alignment: Alignment.topCenter,
             children: <Widget>[
               Positioned(
-                left: -_size.width / 3,
-                right: -_size.width / 3,
+                left: -_size.width / 2,
+                right: -_size.width / 2,
                 child: Image(
-                  image: NetworkImage(
+                  image: AssetImage(
                     foodImgListVert[index],
                   ),
                   fit: BoxFit.cover,
@@ -122,7 +122,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         );
       },
       child: Container(
-        height: _size.height * .38,
+        height: _size.height * .50,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -131,6 +131,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
           child: ScrollSnapList(
             listController: _plentyScrollController,
             onItemFocus: (item) {
+              print(item);
               items = foodStore[item]["item"];
               setState(() {
                 _plentyIndex = item;
@@ -196,21 +197,11 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 child: FoodStorePage()));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image(
-                image: NetworkImage(
-                  foodImgListVert[index],
-                ),
-                width: _size.width / 2,
-                height: 250,
-              ),
-            ),
-          ],
+//decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+        margin: EdgeInsets.symmetric(horizontal: 5),
+        child: Image.asset(
+          foodImgListVert[index],
+          fit: BoxFit.cover,
         ),
       ),
     );
@@ -220,7 +211,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
               color: AppColors.greyss, borderRadius: BorderRadius.circular(20)),
           child: Column(
@@ -308,8 +299,8 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
           ),
         ),
         Container(
-            padding: EdgeInsets.all(
-              25,
+            padding: EdgeInsets.symmetric(
+              horizontal: 25,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -319,13 +310,15 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
             )),
         _plentyListView(),
         Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
             child: Divider(
               color: Colors.black,
               height: 10,
             )),
         Padding(
-          padding: const EdgeInsets.only(left: 25.0, bottom: 15),
+          padding: const EdgeInsets.only(
+            left: 25.0,
+          ),
           child: homeWelcome2('Most Popular Items', 15),
         ),
         _plentyListView1()

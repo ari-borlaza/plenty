@@ -1,11 +1,12 @@
 import 'package:plenty/config/colors.dart';
 
-final List<dynamic> fashionImgListVert = [
-  'assets/brandsposter/design ala carte.png',
-  'assets/brandsposter/rendezvous.png',
+final List<dynamic> beautyImgListVert = [
+  'assets/brandsposter/skirts.png',
+  'assets/brandsposter/manners.png',
+  'assets/brandsposter/noise.png'
 ];
 
-final List<dynamic> fashionImgListVert1 = [
+final List<dynamic> beautyImgListVert1 = [
   'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc2hpb258ZW58MHwxfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1612902377731-476923c0eb1c?ixid=MXwxMjA3fDF8MHxzZWFyY2h8MXx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1612902376658-d4d46558ee04?ixid=MXwxMjA3fDF8MHxzZWFyY2h8Nnx8ZmFzaGlvbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
@@ -13,7 +14,7 @@ final List<dynamic> fashionImgListVert1 = [
   'https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fGZhc2hpb258ZW58MHwxfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
 ];
 
-final List<Map<String, dynamic>> fashionStore = [
+final List<Map<String, dynamic>> beautyStore = [
   {
     "index": 0,
     "color": AppColors.lightGreen,

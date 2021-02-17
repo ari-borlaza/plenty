@@ -3,22 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './colors.dart';
 
-const inputFieldTextStyle = TextStyle(fontWeight: FontWeight.w500);
+const inputFieldTextStyle =
+    TextStyle(fontWeight: FontWeight.w500, letterSpacing: 2);
 
-const inputFieldHintTextStyle = TextStyle(color: Color(0xff444444));
+const inputFieldHintTextStyle =
+    TextStyle(color: Color(0xff444444), letterSpacing: 3);
 
 const inputFieldPasswordTextStyle =
-    TextStyle(fontWeight: FontWeight.w500, letterSpacing: 3);
+    TextStyle(fontWeight: FontWeight.w500, letterSpacing: 2);
 
-const inputFieldHintPaswordTextStyle =
-    TextStyle(color: Color(0xff444444), letterSpacing: 2);
+const inputFieldHintPaswordTextStyle = TextStyle(
+  color: Color(0xff444444),
+  letterSpacing: 2,
+);
 
 const inputFieldFocusedBorderStyle = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(30)),
-    borderSide: BorderSide(color: AppColors.plentyblue));
+    borderRadius: BorderRadius.all(Radius.circular(5)),
+    borderSide: BorderSide(color: Colors.transparent));
 
 const inputFieldDefaultBorderStyle = OutlineInputBorder(
-    gapPadding: 0, borderRadius: BorderRadius.all(Radius.circular(5)));
+    borderSide: BorderSide.none,
+    gapPadding: 0,
+    borderRadius: BorderRadius.all(Radius.circular(5)));
 
 FlatButton plentyFlatBtn(String text, onPressed) {
   return FlatButton(
@@ -103,16 +109,29 @@ Container plentyTextInput(String hintText,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
-      cursorColor: AppColors.plentyblue,
+      // cursorColor: AppColors.plentyblue,
       style: inputFieldTextStyle,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        hintText: hintText,
-        hintStyle: GoogleFonts.oswald(fontSize: 15),
-        focusedBorder: inputFieldFocusedBorderStyle,
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        border: inputFieldDefaultBorderStyle,
-      ),
+          filled: true,
+          fillColor: AppColors.txtfields,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.asset(
+              'assets/icons/User02.png',
+              width: 10,
+              height: 10,
+              fit: BoxFit.fill,
+              color: AppColors.plentyblue,
+            ),
+          ),
+          hintText: hintText,
+          hintStyle: GoogleFonts.oswald(fontSize: 13),
+          //focusedBorder: inputFieldFocusedBorderStyle,
+          //contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              // gapPadding: 6,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)))),
     ),
   );
 }
@@ -121,24 +140,40 @@ Container plentyPasswordInput(String hintText,
     {onTap, onChanged, onEditingComplete, onSubmitted}) {
   return Container(
     width: 300,
-    margin: EdgeInsets.only(top: 10),
+    // height: 200,
+    margin: EdgeInsets.only(top: 5),
+
     child: TextField(
       onTap: onTap,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
       obscureText: true,
-      cursorColor: AppColors.plentyblue,
+      //cursorColor: AppColors.plentyblue,
       style: inputFieldHintPaswordTextStyle,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.lock),
-          /*    filled: true,
-          fillColor: AppColors.txtfields, */
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.asset(
+              'assets/icons/Lock.png',
+              width: 10,
+              height: 10,
+              fit: BoxFit.fill,
+              color: AppColors.plentyblue,
+            ),
+          ),
+          filled: true,
+          fillColor: AppColors.txtfields,
           hintText: hintText,
-          hintStyle: GoogleFonts.oswald(fontSize: 15),
-          focusedBorder: inputFieldFocusedBorderStyle,
-          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          border: inputFieldDefaultBorderStyle),
+          hintStyle: GoogleFonts.oswald(fontSize: 13),
+          //disabledBorder: inputFieldFocusedBorderStyle,
+          //focusedBorder: inputFieldFocusedBorderStyle,
+          // contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          //  border: inputFieldFocusedBorderStyle
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              //       gapPadding: 0,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)))),
     ),
   );
 }
