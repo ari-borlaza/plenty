@@ -50,7 +50,7 @@ class _FashionStorePageState extends State<FashionStorePage>
     );
   }
 }
-
+/* 
 class ContestTabHeader extends SliverPersistentHeaderDelegate {
   ContestTabHeader(
     this.fashionTab,
@@ -64,16 +64,16 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 52.0;
+  double get maxExtent => 100.0;
 
   @override
-  double get minExtent => 52.0;
+  double get minExtent => 100.0;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
     return false;
   }
-}
+} */
 
 class FashionBody extends StatefulWidget {
   FashionBody({Key key}) : super(key: key);

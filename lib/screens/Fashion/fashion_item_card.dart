@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plenty/config/constants.dart';
+import 'package:plenty/config/colors.dart';
+import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/fashion_product.dart';
 
 class ItemCard extends StatelessWidget {
@@ -16,15 +17,18 @@ class ItemCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+
+              /* only(
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
+                  bottomRight: Radius.circular(10)) */
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -64,19 +68,14 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  // products is out demo list
-                  product.title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                itemTxt1(product.title, 20, AppColors.black, FontWeight.bold),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "\SAR ${product.price}",
-                      ),
+                      itemTxt2('SAR ', 10),
+                      itemTxt2("${product.price}", 20),
                     ],
                   ),
                 )
