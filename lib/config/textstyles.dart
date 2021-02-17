@@ -118,6 +118,7 @@ Text itemTxt1(String txt, double a, Color b, FontWeight c) {
 
 Text itemTxt2(String txt, double a) {
   return Text(
+    
     txt,
     style: GoogleFonts.raleway(fontSize: a, color: AppColors.black),
   );
