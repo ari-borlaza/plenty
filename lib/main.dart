@@ -4,8 +4,11 @@ import 'package:plenty/screens/Food/FoodCategoryPage.dart';
 import 'package:plenty/screens/Food/FoodItemPage.dart';
 import 'package:plenty/screens/Food/FoodStorePage.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
+import 'package:plenty/screens/Home/OTPnumber.dart';
+import 'package:plenty/screens/Home/OTPverify.dart';
 import 'package:plenty/screens/Home/RewardCard.dart';
 import 'package:plenty/screens/Home/SignInPage.dart';
+import 'package:plenty/screens/sample/shimmer.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SignInPage(),
+      home: HomePage(),
     );
   }
 }

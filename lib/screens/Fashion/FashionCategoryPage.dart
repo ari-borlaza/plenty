@@ -117,7 +117,7 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
 
   Widget _plentyListView() {
     return TweenAnimationBuilder(
-      duration: Duration(milliseconds: 700),
+      duration: Duration(milliseconds: 100),
       tween: Tween<double>(begin: 600, end: 0),
       curve: Curves.easeOutCubic,
       builder: (_, value, child) {
@@ -201,17 +201,15 @@ class _FashionCategoryPageState extends State<FashionCategoryPage>
                 child: FashionStorePage()));
       },
       child: Container(
+        padding: EdgeInsets.all(10),
         margin: EdgeInsets.symmetric(horizontal: 24),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              fashionImgListVert[index],
-            ),
-            width: _size.width / 2,
-            //  height: 250,
+        child: Image(
+          fit: BoxFit.cover,
+          image: AssetImage(
+            fashionImgListVert[index],
           ),
+          width: _size.width / 2,
+          //  height: 250,
         ),
       ),
     );

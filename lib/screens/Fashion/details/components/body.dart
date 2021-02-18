@@ -37,13 +37,30 @@ class Body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                itemTxt1(product.title, 30, AppColors.black, FontWeight.bold),
+                itemTxt4(product.title, 20, AppColors.black, FontWeight.bold),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    itemTxt1(product.description, 15, AppColors.grey,
-                        FontWeight.bold),
-                    itemTxt2('\SAR ${product.price}', 20),
+                    itemTxt4(product.description, 12, AppColors.grey,
+                        FontWeight.normal),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        itemTxt4(
+                            'SAR ', 18, AppColors.black, FontWeight.normal),
+                        itemTxt4('${product.price}', 18, AppColors.black,
+                            FontWeight.bold),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    itemTxt4(
+                        'Designer:', 12, AppColors.grey, FontWeight.normal),
+                    itemTxt4(
+                        product.designer, 15, AppColors.black, FontWeight.bold),
                   ],
                 ),
                 SizedBox(

@@ -62,6 +62,23 @@ FlatButton plentyFlatBtn4(String text, onPressed) {
   );
 }
 
+Widget plentyFlatBtn6(String text, onPressed, Color color, color1, Icon icon) {
+  return FlatButton.icon(
+    // minWidth: double.infinity,
+
+    icon: icon,
+    onPressed: onPressed,
+    label: Text(text, style: GoogleFonts.cabin(fontSize: 15)),
+    textColor: color,
+    color: color1,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+        side: BorderSide(color: AppColors.black)),
+
+    splashColor: AppColors.txtfields,
+  );
+}
+
 FlatButton plentyFlatBtn1(String text, onPressed) {
   return FlatButton.icon(
     icon: Icon(CupertinoIcons.chevron_left),
@@ -85,6 +102,19 @@ FlatButton plentyFlatBtn2(String text, onPressed) {
     color: AppColors.sadagreen,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     splashColor: AppColors.txtfields,
+  );
+}
+
+FlatButton plentyFlatBtn5(String text, onPressed) {
+  return FlatButton(
+    minWidth: double.infinity,
+    padding: EdgeInsets.fromLTRB(50, 5, 50, 5),
+    onPressed: onPressed,
+    child: Text(text, style: GoogleFonts.cabin(fontSize: 20)),
+    textColor: AppColors.white,
+    color: AppColors.plentyblue1,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    splashColor: AppColors.plentyblue1,
   );
 }
 

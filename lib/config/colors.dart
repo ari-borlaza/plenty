@@ -38,10 +38,12 @@ class AppColors {
   static const Color btn = Color(0xFF2d2d2d);
   static const Color shadow = Color(0xFF838383);
   static const Color duegreen = Color(0xFF27c61c);
+  static const Color gold = Color(0xFFFFD700);
 
+  static const Color gold1 = Color(0xFFDFB722);
   static const Color greysss = Color(0xFF1f1f1f);
   static const Color plentyblue = Color(0xFF253a4b);
-
+  static const Color plentyblue1 = Color(0xFF26357D);
   static const Color sadagreen = Color(0xFF116f3d);
   static const Color sadagreen1 = Color(0xFF013C1Dd);
 }

@@ -19,57 +19,6 @@ class Rewards extends StatefulWidget {
 }
 
 class _RewardsState extends State<Rewards> {
-  /* // translate and customize captions
-  final Map<String, String> customCaptions = {
-    'PREV': 'Prev',
-    'NEXT': 'Next',
-    'DONE': 'Done',
-    'CARD_NUMBER': 'Card Number',
-    'CARDHOLDER_NAME': 'Cardholder Name',
-    'VALID_THRU': 'Valid Thru',
-    'SECURITY_CODE_CVC': 'Security Code (CVC)',
-    'NAME_SURNAME': 'Name Surname',
-    'MM_YY': 'MM/YY',
-    'RESET': 'Reset',
-  };
-
-  final buttonStyle = BoxDecoration(
-    borderRadius: BorderRadius.circular(30.0),
-    gradient: LinearGradient(
-        colors: [
-          const Color(0xFF26325E),
-          const Color(0xfff38381),
-        ],
-        begin: const FractionalOffset(0.0, 0.0),
-        end: const FractionalOffset(1.0, 0.0),
-        stops: [0.0, 1.0],
-        tileMode: TileMode.clamp),
-  );
-
-  final cardDecoration = BoxDecoration(
-      image: DecorationImage(
-        image: NetworkImage(
-          'https://image.freepik.com/free-vector/luxury-ornamental-mandala-islamic-background-with-golden-arabesque-patterns_177363-506.jpg',
-        ),
-        fit: BoxFit.fitWidth,
-      ),
-      boxShadow: <BoxShadow>[
-        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
-      ],
-      gradient: LinearGradient(
-          colors: [
-            Colors.red,
-            Colors.blue,
-          ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
-          tileMode: TileMode.clamp),
-      borderRadius: BorderRadius.all(Radius.circular(15)));
-
-  final buttonTextStyle =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
- */
   List<String> list1 = [
     'Account Details',
     'Contact Us',
@@ -158,36 +107,6 @@ class _RewardsState extends State<Rewards> {
                   ),
                 ),
               ),
-
-              /* AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                child: Stack(children: [
-                  CreditCardInputForm(
-                    showResetButton: true,
-                    onStateChange: (currentState, cardInfo) {
-                      print(currentState);
-                      print(cardInfo);
-                    },
-                    // customCaptions: customCaptions,
-                    // cardCVV: '222',
-                    // cardName: 'Jeongtae Kim',
-                    // cardNumber: '1111111111111111',
-                    // cardValid: '12/12',
-                    // intialCardState: InputState.DONE,
-                    frontCardDecoration: cardDecoration,
-                    backCardDecoration: cardDecoration,
-                    prevButtonDecoration: buttonStyle,
-                    nextButtonDecoration: buttonStyle,
-                    //prevButtonStyle: buttonStyle,
-                    //nextButtonStyle: buttonStyle,
-                    prevButtonTextStyle: buttonTextStyle,
-                    nextButtonTextStyle: buttonTextStyle,
-                    // resetButtonTextStyle: buttonTextStyle,
-                  ),
-                ]),
-              ),
-               */
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: plentyFlatBtn3("Add to Apple Wallet", () {}),
@@ -266,7 +185,7 @@ class _RewardsState extends State<Rewards> {
                       ),
                       SignInButton.mini(
                         buttonType: ButtonType.twitter,
-                        btnColor: Colors.blue,
+                        //         btnColor: AppColors.lightBlue,
                         onPressed: () {
                           Navigator.push(
                               context,

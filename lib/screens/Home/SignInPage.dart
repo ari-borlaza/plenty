@@ -4,6 +4,7 @@ import 'package:plenty/config/btn_txt.dart';
 import 'package:plenty/config/textstyles.dart';
 import 'package:plenty/data/food_data_list.dart';
 import 'package:plenty/screens/Home/HomePage.dart';
+import 'package:plenty/screens/Home/OTPnumber.dart';
 import 'package:sign_button/sign_button.dart';
 
 class SignInPage extends StatefulWidget {
@@ -83,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                   PageTransition(
                       type: PageTransitionType.rightToLeftWithFade,
                       duration: Duration(milliseconds: 500),
-                      child: HomePage()));
+                      child: OTPnumber()));
             }),
           ),
           Container(

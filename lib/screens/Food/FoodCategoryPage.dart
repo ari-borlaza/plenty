@@ -18,7 +18,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
   double _maxPlentyTranslate = 65;
-  double get _plentyItemWidth => _size.width;
+  double get _plentyItemWidth => _size.width / 2 + 48;
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _plentyScrollController1 = ScrollController();
   ScrollController _backgroundScrollController = ScrollController();
@@ -55,7 +55,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
       physics: NeverScrollableScrollPhysics(),
       controller: _backgroundScrollController,
       padding: EdgeInsets.zero,
-      reverse: true,
+      reverse: false,
       itemCount: foodImgListVert.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (ctx, index) {
@@ -112,7 +112,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
 
   Widget _plentyListView() {
     return TweenAnimationBuilder(
-      duration: Duration(milliseconds: 700),
+      duration: Duration(milliseconds: 100),
       tween: Tween<double>(begin: 600, end: 0),
       curve: Curves.easeOutCubic,
       builder: (_, value, child) {
@@ -122,7 +122,7 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         );
       },
       child: Container(
-        height: _size.height * .50,
+        height: _size.height * .28,
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
             overScroll.disallowGlow();
@@ -216,10 +216,15 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
       child: Container(
 //decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
         //  margin: EdgeInsets.only(left: 24, right: 24),
-        margin: EdgeInsets.only(left: 24, right: 24),
+        //  margin: EdgeInsets.only(left: 0, right: 0),
+        margin: EdgeInsets.symmetric(horizontal: 24),
+
+        padding: EdgeInsets.all(10),
         child: Image.asset(
           foodImgListVert[index],
-          fit: BoxFit.cover,
+          fit: BoxFit.fitHeight,
+          width: _size.width / 2,
+          //  height: 600,
         ),
       ),
     );

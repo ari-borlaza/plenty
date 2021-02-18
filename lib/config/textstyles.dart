@@ -118,7 +118,6 @@ Text itemTxt1(String txt, double a, Color b, FontWeight c) {
 
 Text itemTxt2(String txt, double a) {
   return Text(
-    
     txt,
     style: GoogleFonts.raleway(fontSize: a, color: AppColors.black),
   );
@@ -128,5 +127,12 @@ Text itemTxt3(String txt, double a) {
   return Text(
     txt,
     style: GoogleFonts.raleway(fontSize: a, color: AppColors.sadagreen),
+  );
+}
+
+Text itemTxt4(String txt, double a, Color b, FontWeight c) {
+  return Text(
+    txt,
+    style: GoogleFonts.didactGothic(fontSize: a, color: b, fontWeight: c),
   );
 }
