@@ -98,31 +98,30 @@ class _HomePageState extends State<HomePage>
       builder: (_, value, child) {
         return Transform.translate(
           offset: Offset(value, 0),
-          child: child,
+          child: Container(
+            height: _size.height * .8,
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overScroll) {
+                overScroll.disallowGlow();
+                return true;
+              },
+              child: ScrollSnapList(
+                listController: _plentyScrollController,
+                onItemFocus: (item) {
+                  _plentyIndex = item;
+                },
+                itemSize: _plentyItemWidth,
+                padding: EdgeInsets.zero,
+                itemCount: _plentyData.plentyList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return _plentyItem(index);
+                },
+              ),
+            ),
+          ),
         );
       },
-      child: Container(
-        height: _size.height * .8,
-        child: NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (overScroll) {
-            overScroll.disallowGlow();
-            return true;
-          },
-          child: ScrollSnapList(
-            listController: _plentyScrollController,
-            onItemFocus: (item) {
-              _plentyIndex = item;
-            },
-            itemSize: _plentyItemWidth,
-            padding: EdgeInsets.zero,
-            itemCount: _plentyData.plentyList.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return _plentyItem(index);
-            },
-          ),
-        ),
-      ),
     );
   }
 

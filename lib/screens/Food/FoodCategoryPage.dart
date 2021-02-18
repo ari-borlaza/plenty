@@ -17,7 +17,7 @@ class FoodCategoryPage extends StatefulWidget {
 class _FoodCategoryPageState extends State<FoodCategoryPage>
     with SingleTickerProviderStateMixin {
   Size get _size => MediaQuery.of(context).size;
-
+  double _maxPlentyTranslate = 65;
   double get _plentyItemWidth => _size.width;
   ScrollController _plentyScrollController = ScrollController();
   ScrollController _plentyScrollController1 = ScrollController();
@@ -196,9 +196,27 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
                 duration: Duration(milliseconds: 500),
                 child: FoodStorePage()));
       },
+      /*   child: Container(
+        //padding: EdgeInsets.only(bottom: 40),
+        margin: EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Image(
+              height: 350,
+              width: _size.width / 2,
+              image: AssetImage(
+                foodImgListVert[index],
+              ),
+            ),
+          ],
+        ),
+      ), */
+
       child: Container(
 //decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
-        margin: EdgeInsets.symmetric(horizontal: 5),
+        //  margin: EdgeInsets.only(left: 24, right: 24),
+        margin: EdgeInsets.only(left: 24, right: 24),
         child: Image.asset(
           foodImgListVert[index],
           fit: BoxFit.cover,
@@ -324,5 +342,28 @@ class _FoodCategoryPageState extends State<FoodCategoryPage>
         _plentyListView1()
       ],
     );
+  }
+
+  double _plentyTranslate(double offset, double activeOffset) {
+    double translate;
+    if (_plentyScrollController.offset + _plentyItemWidth <= activeOffset) {
+      translate = _maxPlentyTranslate;
+    } else if (_plentyScrollController.offset <= activeOffset) {
+      translate = _maxPlentyTranslate -
+          ((_plentyScrollController.offset -
+                  (activeOffset - _plentyItemWidth)) /
+              _plentyItemWidth *
+              _maxPlentyTranslate);
+    } else if (_plentyScrollController.offset <
+        activeOffset + _plentyItemWidth) {
+      translate = ((_plentyScrollController.offset -
+                  (activeOffset - _plentyItemWidth)) /
+              _plentyItemWidth *
+              _maxPlentyTranslate) -
+          _maxPlentyTranslate;
+    } else {
+      translate = _maxPlentyTranslate;
+    }
+    return translate;
   }
 }
